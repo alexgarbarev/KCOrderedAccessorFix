@@ -1,4 +1,4 @@
-//
+
 //  KCCoreDataAccessorFix.m
 //  KCOrderedAccessorFix
 //
@@ -36,7 +36,10 @@
     
     NSString *relationshipName = [relationship name];
     
-    NSString *capitalizedName = [relationshipName capitalizedString];
+    //[relationshipName capitalizedString]; - did't work for my 'quoteTicks' relationship. Method should be named as - addQuoteTicksObject: (instead of addQuoteticksObject)
+    NSRange firstLetterRange = NSMakeRange(0, 1);
+    NSString *firstLetter = [relationshipName substringWithRange:firstLetterRange];
+    NSString *capitalizedName = [relationshipName stringByReplacingCharactersInRange:firstLetterRange withString:[firstLetter uppercaseString]];
     
     const char *fastPrimitiveName = [[[NSString alloc] initWithFormat:@"primitive%@", capitalizedName] UTF8String];
     
