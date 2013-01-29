@@ -1,3 +1,6 @@
+- Forked to change generation selector's name logic.
+
+
 KCOrderedAccessorFix
 ====================
 
